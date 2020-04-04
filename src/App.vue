@@ -1,9 +1,9 @@
 <template lang="html">
   <div>
     <h1>Guardian News Trawler</h1>
-    <div>
+    <div class="main-container">
       <article-list :articleList='articles'></article-list>
-      <article-detail :article='articleDetail'></article-detail>
+      <article-detail :articleDetail='articleDetail'></article-detail>
     </div>  
 
   </div>
@@ -22,7 +22,7 @@ export default {
       response: {},
       articles: [],
       selectedArticle: null,
-      articleDetail: {}
+      articleDetail: null
     }
   },
   mounted(){
@@ -42,7 +42,7 @@ export default {
     selectedArticle: function (oldValue, newValue){
           fetch(`${this.selectedArticle.apiUrl}?show-fields=all&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34`)
           .then(results => results.json())
-          .then(articles => this.articleDetail = articles.response)
+          .then(articles => this.articleDetail = articles.response.content)
           .catch(err => console.log(err))
     }
   },
@@ -55,5 +55,8 @@ export default {
 </script>
 
 <style scoped>
-
+  .main-container{
+    display: flex;
+    justify-content: space-between;
+  }
 </style>
