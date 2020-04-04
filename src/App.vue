@@ -55,6 +55,11 @@ export default {
 </script>
 
 <style scoped>
+
+  h1{
+    color: #052962;
+    font-family: "Guardian Text Egyptian Web",Georgia,serif;
+  }
   .main-container{
     display: flex;
     justify-content: space-between;
