@@ -23,6 +23,7 @@ export default {
     methods: {
         handleSearch(){
             eventBus.$emit('search-entered', this.searchString)
+            this.searchString = ""
         }
     }
 

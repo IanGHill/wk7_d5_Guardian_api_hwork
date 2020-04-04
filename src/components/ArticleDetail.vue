@@ -1,9 +1,9 @@
 <template lang="html">
   <div v-if="articleDetail" class="article-box">
-      <h3> {{articleDetail.webTitle}}</h3>
+      <h3> <a :href=articleDetail.webUrl target="_blank" rel="noreferrer noopener">{{articleDetail.webTitle}}</a></h3>
       <h4>{{articleDetail.fields.byline}}</h4>
       <img :src=articleDetail.fields.thumbnail>
-      <p>{{articleDetail.fields.bodyText.slice(0,500)}}...</p>
+      <p>{{articleDetail.fields.bodyText.slice(0,1000)}}...</p>
       <p>Continue to full article on <a :href=articleDetail.webUrl target="_blank" rel="noreferrer noopener">The Guardian website</a></p>
   </div>
 </template>
