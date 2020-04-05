@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <h1>Guardian News Trawler</h1>
+    <h1>The Guardian <i>previews</i></h1>
     <section class="main-container">
       <div class="center">
         <article-search :articleSearch='searchString' ></article-search>
@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted(){
-    fetch('https://content.guardianapis.com/search?q=UK%20AND%20news&order-by=newest&page=1&page-size=25&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34')
+    fetch('https://content.guardianapis.com/search?q=UK%20AND%20news&order-by=newest&page=1&page-size=6&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34')
     .then(results => results.json())
     // .then(response => this.response = response.response)
     // .then(articles => this.articles = this.response.results)
@@ -56,7 +56,7 @@ export default {
           .catch(err => console.log(err))
     },
         searchString: function (oldValue, newValue){
-          fetch(`https://content.guardianapis.com/search?q=${this.searchString}&order-by=newest&page=1&page-size=25&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34`)
+          fetch(`https://content.guardianapis.com/search?q=${this.searchString}&order-by=newest&page=1&page-size=6&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34`)
           .then(results => results.json())
           .then(articles => this.articles = articles.response.results)
           .then(results => this.selectedArticle = results[0])

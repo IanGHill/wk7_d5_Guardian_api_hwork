@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <form v-on:submit.prevent="handleSearch">
-        <label for="search_box">Search Guardian website: </label>
+        <label for="search_box">Search The Guardian website: </label>
         <input type="text" id="search_box" v-model="searchString"/>
         <input type="submit" value ="Search" />
     </form>

@@ -4,7 +4,7 @@
       <h4>{{articleDetail.fields.byline}}</h4>
       <img :src=articleDetail.fields.thumbnail>
       <p>{{articleDetail.fields.bodyText.slice(0,1000)}}...</p>
-      <p>Continue to full article on <a :href=articleDetail.webUrl target="_blank" rel="noreferrer noopener">The Guardian website</a></p>
+      <p><b>Continue to full article on <a :href=articleDetail.webUrl target="_blank" rel="noreferrer noopener">The Guardian website</a></b></p>
   </div>
 </template>
 

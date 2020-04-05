@@ -2,9 +2,11 @@
     <div>
         <li v-on:click="handleClick">
             <h3>{{article.webTitle}}</h3>
-            <h4>Section: {{article.sectionName}}</h4>
-            <span><b>First published: </b>{{article.webPublicationDate.substring(8,10)}}/{{article.webPublicationDate.substring(5,7)}}/{{article.webPublicationDate.substring(0,4)}} </span><br><br>
-            <span><b>Contributors: </b></span><span >{{formatContributors}} </span><br>
+            <!-- <h4>Section: {{article.sectionName}}</h4> -->
+            <div class="pad-left">
+                <p><b>Contributors: </b>{{formatContributors}} </p>
+                <p><b>First published: </b>{{formatDates}} </p>
+            </div>
         </li>
     </div>
 </template>
@@ -30,6 +32,9 @@ export default {
                 authorString = authorString.substring(0, (authorString.length - 2))
                 return authorString;
        }
+      },
+      formatDates: function(){
+        return `${this.article.webPublicationDate.substring(8,10)}/${this.article.webPublicationDate.substring(5,7)}/${this.article.webPublicationDate.substring(0,4)}`;
       }
     },
     methods: {
@@ -44,15 +49,27 @@ export default {
   h3{
     color: #052962;
     font-family: "Guardian Text Egyptian Web",Georgia,serif;
+    margin: 0.5em; 
   }
 
   li{
       list-style-type: none;
       border: #052962 solid 2px;
       margin: 10px;
-      padding: 5px;
+      padding: 0px 5px 5px 5px;
       background-color: silver;
       border-radius: 20px;
 
+  }
+
+  li:hover{
+      background-color: lightgray;
+      cursor: pointer;
+  }
+
+  .pad-left{
+      padding: 0px 10px 0px 10px;
+      margin: 0px;
+      border: 0px;
   }
 </style>
