@@ -70,7 +70,7 @@ export default {
   },
   methods: {
       getNewsStories(search, priority){
-        fetch(`https://content.guardianapis.com/search?q=${search}&order-by=${priority}&page=1&page-size=6&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34`)
+        fetch(`https://content.guardianapis.com/search?q=${search}&show-tags=contributor&show-elements=all&order-by=${priority}&page=1&page-size=10&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34`)
         .then(results => results.json())
         .then(articles => this.articles = articles.response.results)
         .then(results => this.selectedArticle = results[0])

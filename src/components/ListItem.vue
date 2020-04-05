@@ -2,10 +2,11 @@
     <div>
         <li v-on:click="handleClick">
             <h3>{{article.webTitle}}</h3>
-            <!-- <h4>Section: {{article.sectionName}}</h4> -->
             <div class="pad-left">
+                <p><b>Section: </b>{{article.sectionName}}  <b>First published: </b>{{formatDates}}  <b>Contributors: </b>{{formatContributors}} </p>
+                <!-- <p><b>Section: </b>{{article.sectionName}}</p>
                 <p><b>Contributors: </b>{{formatContributors}} </p>
-                <p><b>First published: </b>{{formatDates}} </p>
+                <p><b>First published: </b>{{formatDates}} </p> -->
             </div>
         </li>
     </div>
@@ -52,18 +53,22 @@ export default {
     margin: 0.5em; 
   }
 
+  p{
+      margin-bottom: 3px;
+      margin-top: 3px;
+  }
   li{
       list-style-type: none;
       border: #052962 solid 2px;
       margin: 10px;
       padding: 0px 5px 5px 5px;
-      background-color: silver;
+      background-color: lightgray;
       border-radius: 20px;
 
   }
 
   li:hover{
-      background-color: lightgray;
+      background-color: silver;
       cursor: pointer;
   }
 

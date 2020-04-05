@@ -4,7 +4,7 @@
       <h3>{{articleDetail.sectionName}}</h3>
       <h4>{{articleDetail.fields.byline}}</h4>
       <img :src=articleDetail.fields.thumbnail>
-      <p>{{articleDetail.fields.bodyText.slice(0,1000)}}...</p>
+      <p>{{articleDetail.fields.bodyText.slice(0,800)}}...</p>
       <p><b>Continue to full article on <a :href=articleDetail.webUrl target="_blank" rel="noreferrer noopener">The Guardian website</a></b></p>
   </div>
 </template>
@@ -35,4 +35,25 @@ export default {
       border-radius: 20px;
 
   }
+
+  /* unvisited link */
+a:link {
+  color: #052962;
+;
+}
+
+/* visited link */
+a:visited {
+  color: darkgray;
+}
+
+/* mouse over link */
+a:hover {
+  color: silver;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
 </style>
