@@ -86,6 +86,7 @@ export default {
     color: #052962;
     font-family: "Guardian Text Egyptian Web",Georgia,serif;
     text-align: center;
+    font-size: 3em;
   }
 
   h3{
@@ -116,7 +117,7 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 0;
-  padding: 0;
+  border: 5px;
+  padding: 5px;
 }
 </style>

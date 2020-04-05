@@ -1,6 +1,7 @@
 <template lang="html">
   <div v-if="articleDetail" class="article-box">
-      <h3> <a :href=articleDetail.webUrl target="_blank" rel="noreferrer noopener">{{articleDetail.webTitle}}</a></h3>
+      <h2> <a :href=articleDetail.webUrl target="_blank" rel="noreferrer noopener">{{articleDetail.webTitle}}</a></h2>
+      <h3>{{articleDetail.sectionName}}</h3>
       <h4>{{articleDetail.fields.byline}}</h4>
       <img :src=articleDetail.fields.thumbnail>
       <p>{{articleDetail.fields.bodyText.slice(0,1000)}}...</p>
@@ -16,7 +17,12 @@ export default {
 </script>
 
 <style scoped>
-  h3{
+ 
+ h2{
+     margin: 0.1em;
+ }
+
+ h3{
     color: #052962;
     font-family: "Guardian Text Egyptian Web",Georgia,serif;
   }
