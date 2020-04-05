@@ -27,17 +27,12 @@ export default {
       articles: [],
       selectedArticle: null,
       articleDetail: null,
-      searchString: ""
+      searchString: "",
+      orderPriority: ""
     }
   },
   mounted(){
-    fetch('https://content.guardianapis.com/search?q=UK%20AND%20news&order-by=newest&page=1&page-size=6&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34')
-    .then(results => results.json())
-    // .then(response => this.response = response.response)
-    // .then(articles => this.articles = this.response.results)
-    .then(articles => this.articles = articles.response.results)
-    .then(results => this.selectedArticle = results[0])
-    .catch(err => console.log(err))
+    this.getNewsStories('UK%20AND%20news', 'newest')
 
     eventBus.$on('article-selected', (article) => {
       this.selectedArticle = article
@@ -45,6 +40,10 @@ export default {
 
     eventBus.$on('search-entered', (search) => {
       this.searchString = search
+    })
+
+    eventBus.$on('search-priority', (priority) => {
+    this.orderPriority = priority
     })
     
   },
@@ -55,19 +54,29 @@ export default {
           .then(articles => this.articleDetail = articles.response.content)
           .catch(err => console.log(err))
     },
-        searchString: function (oldValue, newValue){
-          fetch(`https://content.guardianapis.com/search?q=${this.searchString}&order-by=newest&page=1&page-size=6&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34`)
-          .then(results => results.json())
-          .then(articles => this.articles = articles.response.results)
-          .then(results => this.selectedArticle = results[0])
-          .catch(err => console.log(err))
+    searchString: function (oldValue, newValue){
+      this.getNewsStories(this.searchString, this.orderPriority)
+
+    },
+    orderPriority: function (oldValue, newValue){
+      this.getNewsStories(this.searchString, this.orderPriority)
+
     }
   },
   components: {
     "article-search": ArticleSearch,
     "article-list": ArticleList,
     "article-detail": ArticleDetail
-  }
+  },
+  methods: {
+      getNewsStories(search, priority){
+        fetch(`https://content.guardianapis.com/search?q=${search}&order-by=${priority}&page=1&page-size=6&show-tags=contributor&format=json&api-key=6421a937-fac8-4f40-887c-eeddc9bcda34`)
+        .then(results => results.json())
+        .then(articles => this.articles = articles.response.results)
+        .then(results => this.selectedArticle = results[0])
+        .catch(err => console.log(err))
+        }
+    }
 }
 </script>
 
