@@ -7,7 +7,14 @@
       </div>  
     </section>
     <section class="main-container">
-        <article-list :articleList='articles' class="flex-item main-left"></article-list>
+        <div class="flex-item main-left">
+          <div class ="sub-heading">
+            <h2>{{subHeadingToDisplay}}</h2>
+          </div>
+          <div>
+            <article-list :articleList='articles' ></article-list>
+          </div>
+        </div>
         <article-detail :articleDetail='articleDetail' class="flex-item main-right"></article-detail>
     </section>
   </div>
@@ -63,6 +70,11 @@ export default {
 
     }
   },
+  computed: {
+      subHeadingToDisplay: function(){
+       return this.searchString ? `Search results for ${this.searchString}` : "News Headlines"
+      }
+  },
   components: {
     "article-search": ArticleSearch,
     "article-list": ArticleList,
@@ -87,6 +99,12 @@ export default {
     font-family: "Guardian Text Egyptian Web",Georgia,serif;
     text-align: center;
     font-size: 3em;
+  }
+
+  h2{
+    color: #052962;
+    font-family: "Guardian Text Egyptian Web",Georgia,serif;
+    font-size: 1.7em;
   }
 
   h3{
@@ -119,5 +137,9 @@ export default {
   margin-right: auto;
   border: 5px;
   padding: 5px;
+  }
+  .sub-heading {
+  margin-left: auto;
+  text-align: center;
 }
 </style>
